@@ -1,0 +1,185 @@
+\documentclass[a0,portrait]{lab-poster}
+
+\usepackage[brazil]{babel}    % Configuração de Linguagem (comentar para inglês)
+% \renewcommand{\tablename}{Tabela}
+% \renewcommand{\figurename}{Figura}
+
+% \newcommand\itemadjust{\itemsep.5em \parskip0pt \parsep0pt}
+
+\title{Seu Título Aqui}
+\author{Nome do Aluno 1, Nome do Aluno2}
+% \major{Ciência da Computação}
+\major{Ciência da Computação/Engenharia da Computação/Engenharia Elétrica/...}
+\advisor{Nome do Orientador}
+
+\themecolor{NavyBlue}
+\unilogo{fig/ep-logo.pdf}
+\lablogo{fig/ep-logo.pdf}
+
+\begin{document}
+\maketitle
+
+%---------------------------------------------------------------
+
+\begin{multicols}{2} 
+%---------------------------------------------------------------
+%	MOTIVAÇÃO
+%---------------------------------------------------------------
+% \color{NavyBlue}
+\section*{Seção 1}
+% \color{Black}
+\Large
+\justifying
+
+\begin{itemize}
+	\item Ponto 1;
+	\item Ponto 2;
+	\item 
+\end{itemize}
+
+%---------------------------------------------------------------
+%   AGENTES
+%---------------------------------------------------------------
+\section*{\huge Seção 2}
+
+\begin{itemize}
+	\item Idéia 1; e
+	\item Idéia 2.
+\end{itemize}
+
+%---------------------------------------------------------------
+%	AgentSpeak(L)
+%---------------------------------------------------------------
+\section*{\huge Seção 3}
+
+\begin{itemize}
+	\item É uma linguagem abstrata de programação orientada a agentes baseada na arquitetura BDI;
+	\item Os programas desenvolvidos utilizando a linguagem, como exemplificado no Código~\ref{alg:exemplo-hello-world}, são especificados por um conjunto de crenças, planos, eventos ativadores e ações que o agente executa no ambiente;
+	%\item Rao \cite{article:Rao:1996} introduz as noções básicas para especificação desses conjuntos a partir das definições apresentadas na Tabela~\ref{tab:sintaxe-agentsepak}.
+	\item As definições da Tabela~\ref{tab:sintaxe-agentsepak} são utilizadas para especificar estes conjuntos.
+\end{itemize}
+
+\vspace{13mm}
+
+
+\begin{itemize}
+	\item Mais idéias...:
+	\begin{enumerate}
+		% [leftmargin=2em]\itemadjust
+		\item Idéia 1;
+		\item Idéia 2; 
+		\item Idéia 3; e
+		\item Idéia 4.
+	\end{enumerate}	
+	\item A Figura~\ref{fig:minhafigura} ilustra isto.
+\end{itemize}
+\vspace{13mm}
+
+\begin{center}
+	%\includegraphics[width=0.99\linewidth]{fig/minha-figura.pdf}
+	\Huge Figura Aqui (include comentado)
+	\captionof{figure}{Exemplo de Figura.}
+	\label{fig:minhafigura}
+\end{center}	
+
+
+\section*{Seção 3}
+
+\begin{itemize}
+	\item Mais idéias...:
+	\begin{enumerate}
+		% [leftmargin=2em]\itemadjust
+		\item Idéia 1;
+		\item Idéia 2; 
+		\item Idéia 3; e
+		\item Idéia 4.
+	\end{enumerate}	
+	\item A Figura~\ref{fig:minhafigura} ilustra isto.
+\end{itemize}
+
+
+\vspace{13mm}
+\noindent\begin{minipage}{.235\textwidth}
+	\begin{minipage}{\textwidth}
+		\lstset{style=codeStyle}
+		\begin{lstlisting}[language=Prolog, label={alg:exemplo-hello-world}, caption={Exemplo de programa em AgentSpeak(L).}]
+		/* Agent helloWorld */
+		/* Initial beliefs and rules */
+		
+		/* Initial goals */			
+		!start.
+		/* Plans */
+		+!start : true <- aloha; ?continue(true);      !run (agentspeak).
+		+!run(A) : true <- mahalo(A).
+		\end{lstlisting}
+	\end{minipage}\hfill
+	\vspace{7mm}
+	
+	\begin{minipage}{\textwidth}
+		\lstset{style=codeStyle}
+		\begin{lstlisting}[language=Prolog, label={alg:exemplo-projeto-hello-world}, caption={Exemplo de projeto do AgentSpeak(Py).}]
+		/* Project Name */
+		helloWorld:
+		// List of agents
+		agents = [helloWorld]
+		environment = HelloWorldEnv
+		\end{lstlisting}
+	\end{minipage}\hfill
+\end{minipage}\hfill
+\begin{minipage}{.235\textwidth}
+	\lstset{style=codeStyle}
+	\begin{lstlisting}[language=Python, label={alg:exemplo-environment}, caption={Exemplo da descrição do ambiente em Python.}]
+	from environment import *
+	lt_continue = parse_literal('continue(true)')
+	
+	class HelloWorldEnv(Environment):
+		def __init__(self):
+			Environment.__init__(self)
+		
+		def execute_action(self, agent_name, action):
+			self.clear_perceptions()
+			getattr(self, action.functor)(list(action.args))
+		
+		def aloha(self, *args):
+			self.add_percept(lt_continue)
+			print('Aloha HelloWorldEnv!')
+		
+		def mahalo(self, *args):
+			print('Mahaloing with %s!' % ", ".join(map(str, *args)))
+	\end{lstlisting}
+\end{minipage}
+
+\section*{\huge Seção 4}
+      
+Tamanho atual das fontes:
+\begin{itemize}
+	\item {\tiny \verb|\tiny| Font Size: \showfontsize}
+	\item {\scriptsize \verb|\scriptsize| Font Size: \showfontsize}
+	\item {\footnotesize \verb|\footnotesize| Font Size: \showfontsize}
+	\item {\small \verb|\small| Font Size: \showfontsize}
+	\item {\normalsize \verb|\normalsize| Font Size: \showfontsize}
+	\item {\large \verb|\large| Font Size: \showfontsize}
+	\item {\Large \verb|\Large| Font Size: \showfontsize}
+	\item {\LARGE \verb|\LARGE| Font Size: \showfontsize}
+	\item {\huge \verb|\huge| Font Size: \showfontsize}
+	\item {\Huge \verb|\Huge| Font Size: \showfontsize}
+	\item {\veryHuge \verb|\veryHuge| Font Size: \showfontsize}
+\end{itemize}
+
+
+%---------------------------------------------------------------
+%	REFERENCES
+%---------------------------------------------------------------
+% Descomentar abaixo caso queira usar referências bibliográficas no poster
+%\vspace{-10mm}
+%\large
+%\color{NavyBlue}
+%\color{Black}
+%\raggedright
+%\bibliographystyle{plain}
+%\bibliography{poster}
+
+\end{multicols}
+
+%----------------------------------------------------------------------------------------
+\end{document}
